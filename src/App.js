@@ -2,17 +2,17 @@
 import React, {useState} from 'react'
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import About from './components/About';
+// import About from './components/About';
 import './App.css';
 import './Appa.css';
 import Alert from './components/Alert';
 
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+// } from "react-router-dom";
 
 
 function App() {
@@ -52,21 +52,42 @@ function App() {
   }
 }
 
-  return (
-    <Router>
-      {/* understanding props and propsTypes vd.no.6*/}
-      <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode}/> 
-      {/* understanding state and handling events vd.no.7 */}
-      <Alert alert={alert}/>
+
+// This is done by using react router dom comment out to check react router dom 
+
+//   return (
+//     // <Router>
+//       {/* understanding props and propsTypes vd.no.6*/}
+//       <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode}/> 
+
+//       {/* understanding state and handling events vd.no.7 */}
+//       <Alert alert={alert}/>
+
+//       <div className="container my-3">
+//         {/* <Routes> */}
+//           {/* <Route exact path="/about" element={<About />} /> */}
+//           {/* <Route exact path="/" element={ */}
+//             <TextForm showAlert={showAlert} heading="Enter the text to analyze below... " mode={mode} />
+//             {/* } */}
+//         {/* </Routes> */}
+//       </div>
+//     // </Router>
+//   );
+// }
+
+return (
+    <>
+      <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} />
+      <Alert alert={alert} />
       <div className="container my-3">
-        <Routes>
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below... " mode={mode} />} />
-        </Routes>
+        <TextForm showAlert={showAlert} heading="Enter the text to analyze below... " mode={mode} />
       </div>
-    </Router>
+    </>
   );
 }
+
+
+
 
 export default App;
 
