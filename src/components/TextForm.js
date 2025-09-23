@@ -44,25 +44,27 @@ const handleOnChange=(event)=>{
     return (
         <>
         <div className="container" style={{color:props.mode==='dark'?'white':'#042743'}}>
-    <h1>{props.heading}</h1>
+    <h1 className="mb-4">{props.heading}</h1>
 <div className="mb-3">
-    <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'grey':'white',color:props.mode==='dark'?'white':'#042743'}} id="myBox" rows="8"></textarea>
+    <textarea className="form-control" value={text} onChange={handleOnChange} 
+    style={{backgroundColor:props.mode==='dark'?'#13466e':'white',color:props.mode==='dark'?'white':'#042743'}}
+    id="myBox" rows="8">
+    </textarea>
 </div>
-<button className="btn btn-primary mx-1"  onClick={handleUpperClick}>Convert to Uppercase</button>
-<button className="btn btn-primary mx-1" onClick={handleLowerClick} >Convert to Lowercase</button>
-<button className="btn btn-primary mx-1" onClick={handleClearClick} >Clear text</button>
-<button className="btn btn-primary mx-1" onClick={handleReverseClick} >Reverse text</button>
-<button className="btn btn-primary mx-1" onClick={handleExtraSpace} >Remove extra space</button>
+<button disabled={text.length===0} className="btn btn-primary mx-1 my-1"  onClick={handleUpperClick}>Convert to Uppercase</button>
+<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowerClick} >Convert to Lowercase</button>
+<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClearClick} >Clear text</button>
+<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleReverseClick} >Reverse text</button>
+<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpace} >Remove extra space</button>
         </div>
 
         <div className="container my-2" style={{color:props.mode==='dark'?'white':'#042743'}}>
             <h2>Your text summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters </p>
-            <p>{0.008 *text.split(" ").length} minutes to read </p>
+            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters </p>
+            <p>{0.008 *text.split(" ").filter((element)=>{return element.length!==0}).length} minutes to read </p>
             <h2> Preview</h2>
-            <p>{text.length>0?text:"Enter something in the text box above to preview it"}</p>
+            <p>{text.length>0?text:"Nothing to preview!"}</p>
         </div>
-
         </>
     )
 }

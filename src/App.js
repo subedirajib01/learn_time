@@ -2,17 +2,17 @@
 import React, {useState} from 'react'
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-// import About from './components/About';
+import About from './components/About';
 import './App.css';
 import './Appa.css';
 import Alert from './components/Alert';
 
 
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor='#042743';
       showAlert("Dark mode has been enabled","success");
-      document.title="TextUtils - Dark Mode"
+      // document.title="TextUtils - Dark Mode"
       
       // setTimeout(() => {
       //   document.title="TextUtils is amazing."
@@ -48,45 +48,41 @@ function App() {
       setMode('light');
       document.body.style.backgroundColor='white';
       showAlert("Light mode has been enabled","success")
-      document.title="TextUtils - Light Mode"
+      // document.title="TextUtils - Light Mode"
   }
 }
 
 
 // This is done by using react router dom comment out to check react router dom 
 
-//   return (
-//     // <Router>
-//       {/* understanding props and propsTypes vd.no.6*/}
-//       <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode}/> 
-
-//       {/* understanding state and handling events vd.no.7 */}
-//       <Alert alert={alert}/>
-
-//       <div className="container my-3">
-//         {/* <Routes> */}
-//           {/* <Route exact path="/about" element={<About />} /> */}
-//           {/* <Route exact path="/" element={ */}
-//             <TextForm showAlert={showAlert} heading="Enter the text to analyze below... " mode={mode} />
-//             {/* } */}
-//         {/* </Routes> */}
-//       </div>
-//     // </Router>
-//   );
-// }
-
-return (
-    <>
-      <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
+  return (
+    <Router>
+      {/* understanding props and propsTypes vd.no.6*/}
+      <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode}/> 
+      {/* understanding state and handling events vd.no.7 */}
+      <Alert alert={alert}/>
       <div className="container my-3">
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze below... " mode={mode} />
+        <Routes>
+          <Route exact path="/about"
+          element={<About mode={mode}/>}>
+          </Route>
+          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Try TextUtilis-Word Counter, Character Counter, Remove Extra Spaces" mode={mode} />}/>
+        </Routes>
       </div>
-    </>
+    </Router>
   );
 }
-
-
+// for github hosting we can remove router dom 
+// return (
+//     <>
+//       <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} />
+//       <Alert alert={alert} />
+//       <div className="container my-3">
+//         <TextForm showAlert={showAlert} heading="Enter the text to analyze below... " mode={mode} />
+//       </div>
+//     </>
+//   );
+// }
 
 
 export default App;
